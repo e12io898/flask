@@ -32,7 +32,7 @@ class Ads(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime, server_default=func.now())
     user_id: Mapped[int] = mapped_column(ForeignKey('user.id'))
-    user = relationship(User, backref='user')
+    user = relationship(User, backref='ads')
 
     @property
     def dict(self):

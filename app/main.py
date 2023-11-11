@@ -6,17 +6,21 @@ from models import Session, Ads, User
 from scheme import CreateAdv, UpdateAdv
 from validate import validate
 
+
 app = flask.Flask('api')
+
 
 @app.before_request
 def before_request():
     session = Session()
     request.session = session
 
+
 @app.after_request
 def after_request(response: flask.Response):
     request.session.close()
     return response
+
 
 @app.errorhandler(HttpError)
 def error_handler(error):
@@ -35,6 +39,7 @@ def get_adv(adv_id: int):
 def add_adv(advertisement: Ads):
     request.session.add(advertisement)
     request.session.commit()
+
 
 class AdsView(views.MethodView):
     @property
