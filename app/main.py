@@ -58,7 +58,7 @@ class AdsView(views.MethodView):
         # Проверка на наличие пользователя в базе данных:
         if users is None:
             raise HttpError(
-                400, f'user ID{user_id} not found'
+                404, f'user ID{user_id} not found'
             )
 
         advertisement = Ads(**adv_data)
